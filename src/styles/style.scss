@@ -1,7 +1,96 @@
-body {
-  height: 100vh;
+$primary-color: #2f3131;
+$secondary-color: #f0ea6e;
+$primary-dark: #303131;
+
+@font-face {
+  font-family: "Red Rose";
+  src: url("public/assets/font/Red_Rose/RedRose-VariableFont_wght.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Almarai";
+  src: url("public/assets/font/Almarai/Almarai-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Almarai Light";
+  src: url("public/assets/font/Almarai/Almarai-Light.ttf") format("truetype");
+}
+
+body {
+  height: 100vh;
+  background-color: $primary-color;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #ffffff;
+  font-family: "Red Rose", sans-serif;
+  font-size: 100px;
+  margin-top: 0;
+}
+
+h3 {
+  color: #ffffff;
+  font-family: "Almarai Light", sans-serif;
+  font-weight: 200;
+  font-size: 48px;
+  margin: 0;
+}
+
+button {
+  font-family: "Red Rose", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  background-color: $secondary-color;
+  color: $primary-dark;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  width: 230px;
+  height: 90px;
+  transition: all 300ms ease-in-out;
+
+  &__icon-left {
+    width: 50px;
+    height: 50px;
+  }
+
+  &:hover {
+    width: 250px;
+  }
+}
+
+.rotateLeft {
+  transform: rotate(-40deg);
+  transition: all 300ms ease-in-out;
+}
+
+.rotateRight {
+  transform: rotate(40deg);
+  transition: all 300ms ease-in-out;
+}
+
+.transitionBack {
+  transition: all 300ms ease-in-out;
+}
+
+.scale {
+  transform: scale(1.3);
+  transition: all 300ms ease-in-out;
+}
+
+.controller_big {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
 /* 
 .card {
   height: 100px;
