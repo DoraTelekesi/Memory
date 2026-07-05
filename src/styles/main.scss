@@ -1,26 +1,8 @@
-$primary-color: #2f3131;
-$secondary-color: #f0ea6e;
-$primary-dark: #303131;
-
-@font-face {
-  font-family: "Red Rose";
-  src: url("public/assets/font/Red_Rose/RedRose-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Almarai";
-  src: url("public/assets/font/Almarai/Almarai-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Almarai Light";
-  src: url("public/assets/font/Almarai/Almarai-Light.ttf") format("truetype");
-}
+@import "global";
 
 body {
   height: 100vh;
   background-color: $primary-color;
-  margin: auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;

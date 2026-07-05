@@ -6,63 +6,97 @@
     <title>Settings</title>
   </head>
   <body>
-    <h1>Settings</h1>
-    <div class="settings-content">
-      <div class="">
-        <form class="themes" action="">
-          <div class="themes_title">
-            <img src="public/assets/icon/palette.png" alt="palette" class="themes_title_img" />
-            <p class="themes_title_text">Game themes</p>
+    <div class="main_content">
+      <div class="main_title">
+        <h1 class="main_title-text">Settings</h1>
+        <div class="main_title-underline">
+          <div class="main_title-underline-polygon"></div>
+          <div class="main_title-underline-line"></div>
+        </div>
+      </div>
+      <div class="settings-content">
+        <form class="settings_form" action="">
+          <div class="settings-content_left">
+            <div class="radio_blocks">
+              <div class="themes_title title">
+                <img src="assets/icon/palette.png" alt="palette" class="themes_title_img" />
+                <p class="themes_title_text">Game themes</p>
+              </div>
+              <div class="themes-list list">
+                <div class="themes_selection selection">
+                  <input type="radio" class="code-vibes" name="theme" id="code-vibes" value="code-vibes" checked />
+                  <label for="theme-select">Code vibes theme</label>
+                </div>
+                <div class="themes_selection selection">
+                  <input type="radio" class="gaming" name="theme" id="gaming" value="gaming" />
+                  <label for="theme-select">Gaming theme</label>
+                </div>
+                <div class="themes_selection selection">
+                  <input type="radio" class="da-projects" name="theme" id="da-projects" value="da-projects" />
+                  <label for="theme-select">DA Projects theme</label>
+                </div>
+                <div class="themes_selection selection">
+                  <input type="radio" class="foods" name="theme" id="foods" value="foods" />
+                  <label for="theme-select">Foods theme</label>
+                </div>
+              </div>
+              <div class="player_title title">
+                <img src="assets/icon/chess_pawn.png" alt="chess pawn" class="player_title_img" />
+                <p class="player_title_text">Choose player</p>
+              </div>
+              <div class="player_list list">
+                <div class="player_selection selection">
+                  <input type="radio" class="red" name="player" id="red" value="red" />
+                  <label for="player-select">Red</label>
+                </div>
+                <div class="player_selection selection">
+                  <input type="radio" class="blue" name="player" id="blue" value="blue" checked />
+                  <label for="player-select">Blue</label>
+                </div>
+                <div class="player_selection selection">
+                  <input type="radio" class="orange" name="player" id="orange" value="orange" />
+                  <label for="player-select">Orange</label>
+                </div>
+              </div>
+              <div class="board-size_title title">
+                <img src="assets/icon/style.png" alt="style" class="board-size_title_img" />
+                <p class="board-size_title_text">Choose board size</p>
+              </div>
+              <div class="board-size_list list">
+                <div class="board-size_selection selection">
+                  <input type="radio" class="small" name="board-size" id="small" value="small" checked />
+                  <label for="board-size-select">16 cards</label>
+                </div>
+                <div class="board-size_selection selection">
+                  <input type="radio" class="medium" name="board-size" id="medium" value="medium" />
+                  <label for="board-size-select">24 cards</label>
+                </div>
+                <div class="board-size_selection selection">
+                  <input type="radio" class="large" name="board-size" id="large" value="large" />
+                  <label for="board-size-select">36 cards</label>
+                </div>
+              </div>
+            </div>
           </div>
-          <label for="theme-select">Code vibes theme</label>
-          <input type="radio" class="code-vibes" name="theme" id="code-vibes" value="code-vibes" checked />
-
-          <label for="theme-select">Gaming theme</label>
-          <input type="radio" class="gaming" name="theme" id="gaming" value="gaming" />
-
-          <label for="theme-select">DA Projects theme</label>
-          <input type="radio" class="da-projects" name="theme" id="da-projects" value="da-projects" />
-
-          <label for="theme-select">Foods theme</label>
-          <input type="radio" class="foods" name="theme" id="foods" value="foods" />
-
-          <div class="player_title">
-            <img src="public/assets/icon/chess_pawn.png" alt="chess pawn" class="player_title_img" />
-            <p class="player_title_text">Choose player</p>
+          <div class="settings-content_right">
+            <div class="theme-visual">
+              <div class="theme-visual_background"></div>
+            </div>
+            <div class="chosen-setup">
+              <p>Game theme</p>
+              <span class="divider"></span>
+              <p>Blue Player</p>
+              <span class="divider"></span>
+              <p>Boards-16 Cards</p>
+              <button class="start_btn">
+                <img src="assets/icon/smart_display.png" alt="smart display" class="start_btn-img" />
+                <p class="start_btn-text">Start</p>
+              </button>
+            </div>
           </div>
-          <label for="player-select">Blue</label>
-          <input type="radio" class="blue" name="player" id="blue" value="blue" checked />
-          <label for="player-select">Orange</label>
-          <input type="radio" class="orange" name="player" id="orange" value="orange" />
-
-          <div class="board-size_title">
-            <img src="public/assets/icon/style.png" alt="style" class="board-size_title_img" />
-            <p class="board-size_title_text">Choose board size</p>
-          </div>
-          <label for="board-size-select">16 cards</label>
-          <input type="radio" class="small" name="board-size" id="small" value="small" checked />
-          <label for="board-size-select">24 cards</label>
-          <input type="radio" class="medium" name="board-size" id="medium" value="medium" />
-          <label for="board-size-select">36 cards</label>
-          <input type="radio" class="large" name="board-size" id="large" value="large" />
         </form>
       </div>
-      <div class="">
-        <div class="theme-visual">
-          <div class="theme-visual_background"></div>
-        </div>
-        <div class="chosen-setup">
-          <p>Game theme</p>
-          <span class="divider"></span>
-          <p>Blue Player</p>
-          <span class="divider"></span>
-          <p>Boards-16 Cards</p>
-          <button class="start-btn">
-            <img src="public/assets/icon/smart_display.png" alt="smart display" class="start-btn_img" />
-            <p class="start-btn_text">Start</p>
-          </button>
-        </div>
-      </div>
     </div>
+    <script type="module" src="/src/settings.ts"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import "./styles/style.scss";
+import "./styles/main.scss";
 
 const buttonIconLeft = document.querySelector(".button__icon-left") as HTMLImageElement;
 const buttonIconRight = document.querySelector(".button__icon-right") as HTMLImageElement;
