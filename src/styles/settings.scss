@@ -86,6 +86,22 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+  cursor: pointer;
+  width: 350px;
+
+  label,
+  input {
+    cursor: pointer;
+  }
+
+  &:hover label,
+  input[type="radio"]:checked + label {
+    font-weight: 900;
+  }
+
+  &:hover input[type="radio"]::before {
+    transform: scale(1);
+  }
 }
 
 label {
@@ -151,5 +167,31 @@ input[type="radio"] {
     height: 40px;
     background-color: $secondary-color;
     transform: rotate(20deg);
+  }
+}
+
+.selection-underline {
+  display: none;
+}
+
+.dp-none {
+  display: none;
+}
+
+.selection-underline-visible {
+  display: flex;
+  align-items: center;
+
+  &-polygon {
+    width: 17px;
+    height: 17px;
+    background-color: $secondary-color;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+
+  &-line {
+    width: 40px;
+    height: 3px;
+    background-color: $secondary-color;
   }
 }
