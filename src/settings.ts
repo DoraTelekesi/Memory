@@ -7,12 +7,15 @@ const daProjectsSelection = document.getElementById("da-projects-selection") as 
 const foodsSelection = document.getElementById("foods-selection") as HTMLDivElement;
 
 const blueSelection = document.getElementById("blue-selection") as HTMLDivElement;
-const redSelection = document.getElementById("red-selection") as HTMLDivElement;
 const orangeSelection = document.getElementById("orange-selection") as HTMLDivElement;
 
 const smallSelection = document.getElementById("small-selection") as HTMLDivElement;
 const mediumSelection = document.getElementById("medium-selection") as HTMLDivElement;
 const largeSelection = document.getElementById("large-selection") as HTMLDivElement;
+
+const selectedTheme = document.getElementById("selected-theme") as HTMLParagraphElement;
+const selectedPlayer = document.getElementById("selected-player") as HTMLParagraphElement;
+const selectedSize = document.getElementById("selected-size") as HTMLParagraphElement;
 
 let themeSelection: (HTMLElement | null)[] = [codeVibesSelection, gamingSelection, daProjectsSelection, foodsSelection];
 
@@ -20,6 +23,8 @@ themeSelection.forEach((selection) => {
   selection?.addEventListener("click", () => {
     if (selection) {
       selection.classList.add("is-selected");
+      console.log(selection);
+      selectedTheme.textContent = `${selection.textContent}`;
     }
     themeSelection.forEach((otherSelection) => {
       if (otherSelection !== selection) {
@@ -29,12 +34,13 @@ themeSelection.forEach((selection) => {
   });
 });
 
-let colorSelection: (HTMLElement | null)[] = [blueSelection, redSelection, orangeSelection];
+let colorSelection: (HTMLElement | null)[] = [blueSelection, orangeSelection];
 
 colorSelection.forEach((selection) => {
   selection?.addEventListener("click", () => {
     if (selection) {
       selection.classList.add("is-selected");
+      selectedPlayer.textContent = `${selection.textContent}`;
     }
     colorSelection.forEach((otherSelection) => {
       if (otherSelection !== selection) {
@@ -50,6 +56,7 @@ sizeSelection.forEach((selection) => {
   selection?.addEventListener("click", () => {
     if (selection) {
       selection.classList.add("is-selected");
+      selectedSize.textContent = `${selection.textContent}`;
     }
     sizeSelection.forEach((otherSelection) => {
       if (otherSelection !== selection) {
