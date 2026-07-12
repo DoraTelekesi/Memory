@@ -94,6 +94,22 @@ body {
     cursor: pointer;
   }
 
+  .selection-underline {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover,
+  &.is-selected {
+    .selection-underline {
+      opacity: 1;
+    }
+  }
+
+  
+
   &:hover label,
   input[type="radio"]:checked + label {
     font-weight: 900;
@@ -168,14 +184,6 @@ input[type="radio"] {
     background-color: $secondary-color;
     transform: rotate(20deg);
   }
-}
-
-.selection-underline {
-  display: none;
-}
-
-.dp-none {
-  display: none;
 }
 
 .selection-underline-visible {
