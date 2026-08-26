@@ -414,3 +414,119 @@ input[type="radio"] {
 }
 
 //theme game end
+
+.theme-visual-da {
+  background-color: #bfe5f2;
+  width: 460px;
+  height: 410px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  &_cards {
+    width: 450px;
+    height: 260px;
+    position: relative;
+    &_da {
+      z-index: 99;
+      width: 200px;
+      height: 170px;
+      position: absolute;
+      left: 45px;
+    }
+    &_da-front {
+      margin-top: 0px;
+      z-index: 1;
+      width: 200px;
+      height: 170px;
+      right: 50px;
+      top: 70px;
+      position: absolute;
+    }
+  }
+}
+
+.theme-visual_header-da {
+  width: 97%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  font-family: "Figtree", sans-serif;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+
+  &_players {
+    background-color: #ffffff;
+    width: 100px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 7px;
+
+    &_img {
+      width: 15px;
+      height: 15px;
+    }
+
+    &_text-blue,
+    &_number-blue {
+      color: #097fc5;
+      font-size: 15px;
+      font-family: "Figtree", sans-serif;
+    }
+
+    &_text-orange,
+    &_number-orange {
+      color: #ea6900;
+      font-size: 15px;
+      font-family: "Figtree", sans-serif;
+    }
+  }
+
+  &_current {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    &_text {
+      color: #1e7594;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: "Figtree", sans-serif;
+    }
+    &_img {
+      width: 35px;
+      height: 20px;
+    }
+  }
+
+  &_exit {
+    background-color: #bfe5f2;
+    border-radius: 7px;
+    width: 100px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 3px;
+
+    &_img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &_text {
+      color: #1e7594;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: "Red Rose", sans-serif;
+    }
+  }
+}
