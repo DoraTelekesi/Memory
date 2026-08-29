@@ -73,4 +73,25 @@ export const daProjectsSelectionTemplate = `<div class="theme-visual-da">
                 </div>
               </div>`;
 
-export const foodsSelectionTemplate = `<div class="theme-visual-foods">`;
+export const foodsSelectionTemplate = `<div class="theme-visual-food">
+                <div class="theme-visual_header-food">
+                  <div class="theme-visual_header-food_players">
+                    <img src="assets/icon/chess_pawn_blue.svg" alt="blue label" class="theme-visual_header-food_players_img" />
+                    <p class="theme-visual_header-food_players_number-blue">0</p>
+                    <img src="assets/icon/chess_pawn_orange.svg" alt="orange label" class="theme-visual_header-food_players_img" />
+                    <p class="theme-visual_header-food_players_number-orange">6</p>
+                  </div>
+                  <div class="theme-visual_header-food_current">
+                    <p class="theme-visual_header-food_current_text">Current Player:</p>
+                    <img src="assets/icon/current_player_dark_blue.svg" alt="blue label" class="theme-visual_header-food_current_img" />
+                  </div>
+                  <div class="theme-visual_header-food_exit">
+                    <img src="assets/icon/exit_orange.svg" alt="exit" class="theme-visual_header-food_exit_img" />
+                    <p class="theme-visual_header-food_exit_text">EXIT GAME</p>
+                  </div>
+                </div>
+                <div class="theme-visual-food_cards">
+                  <img src="assets/img/food_card_back.png" class="theme-visual-food_cards_food_back" alt="dev akademie card" />
+                  <img src="assets/img/food_card_front.png" class="theme-visual-food_cards_food_front" alt="git card" />
+                </div>
+              </div>`;

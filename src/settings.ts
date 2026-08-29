@@ -1,4 +1,5 @@
-import "./styles/settings.scss";
+import "./styles/settings/settings_main.scss";
+import "./styles/settings/themes.scss";
 import { codeVibesSelectionTemplate, gamingSelectionTemplate, daProjectsSelectionTemplate, foodsSelectionTemplate } from "./templates/themes";
 
 //Radio Button variables

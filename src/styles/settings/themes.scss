@@ -1,0 +1,372 @@
+@use "/src/styles/settings/mixins.scss" as *;
+@import "/src/styles/global";
+
+//theme code vibes begin
+
+.theme-visual_header {
+  @include theme-visual-header(transparent, "Red Rose", sans-serif, 20px);
+  box-shadow: none;
+
+  &_players {
+    background-color: #86e9d64d;
+    width: 148px;
+    height: 30px;
+    @include flex(none, center, row);
+    gap: 10px;
+    padding: 5px;
+
+    &_img {
+      width: 10px;
+      height: 10px;
+    }
+
+    &_text-blue,
+    &_number-blue {
+      color: #097fc5;
+      font-size: 11px;
+    }
+
+    &_text-orange,
+    &_number-orange {
+      color: #ea6900;
+      font-size: 11px;
+    }
+  }
+
+  &_current {
+    @include flex(none, center, row);
+    gap: 10px;
+    &_text {
+      color: white;
+      font-size: 10px;
+    }
+    &_img {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &_exit {
+    @include flex(center, center, row);
+    background-color: #4dd5bc33;
+    width: 90px;
+    height: 25px;
+    gap: 10px;
+    border: 1px solid #4dd5bc;
+    padding: 5px;
+
+    &_img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &_text {
+      color: white;
+      font-size: 12px;
+      font-family: "Red Rose", sans-serif;
+    }
+  }
+}
+
+.theme-visual {
+  @include theme-visual(transparent);
+  justify-content: space-around;
+  background: linear-gradient(223.71deg, #303131 43.86%, #6d6d6d 122.2%);
+  &_cards {
+    @include theme-visual_cards(400px, 250px);
+    &_dev {
+      width: 200px;
+      height: 200px;
+      @include theme-visual_cards_position(30px, none, auto, 99);
+    }
+    &_git {
+      margin-top: 0px;
+      width: 200px;
+      height: 200px;
+      @include theme-visual_cards_position(auto, 30px, 30px, 1);
+    }
+  }
+}
+
+//theme code vibes end
+
+//theme game begin
+
+.theme-visual-game {
+  @include theme-visual(transparent);
+  background: linear-gradient(226.04deg, #294f60 19.4%, #2086b4 111.63%);
+
+  &_cards {
+    width: 450px;
+    height: 260px;
+    position: relative;
+    &_game {
+      @include theme-visual_cards_position(47px, none, none, 99);
+    }
+    &_game-front {
+      margin-top: 0px;
+      @include theme-visual_cards_position(none, 35px, 49px, 1);
+    }
+  }
+}
+
+.theme-visual_header-game {
+  @include theme-visual-header(#fd96c933, "Orbitron", sans-serif);
+  width: 97%;
+
+  &_players {
+    background-color: #ffffff;
+    width: 100px;
+    height: 25px;
+    @include flex(center, center, row);
+    gap: 10px;
+    padding: 5px;
+    border-radius: 7px;
+
+    &_img {
+      width: 15px;
+      height: 15px;
+    }
+
+    &_text-blue,
+    &_number-blue {
+      color: #097fc5;
+      font-size: 15px;
+      font-family: "Orbitron", sans-serif;
+    }
+
+    &_text-orange,
+    &_number-orange {
+      color: #ea6900;
+      font-size: 15px;
+      font-family: "Orbitron", sans-serif;
+    }
+  }
+
+  &_current {
+    @include flex(none, center, row);
+    gap: 10px;
+    &_text {
+      color: white;
+      font-size: 15px;
+      font-family: "Orbitron", sans-serif;
+    }
+    &_img {
+      width: 35px;
+      height: 20px;
+    }
+  }
+
+  &_exit {
+    background-color: #4dd5bc33;
+    width: 90px;
+    height: 25px;
+    @include flex(center, center, row);
+    gap: 10px;
+    border: 1px solid #4dd5bc;
+    padding: 5px;
+
+    &_img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &_text {
+      color: white;
+      font-size: 12px;
+      font-family: "Red Rose", sans-serif;
+    }
+  }
+}
+
+//theme game end
+
+//theme da begin
+
+.theme-visual-da {
+  @include theme-visual(#bfe5f2);
+
+  &_cards {
+    width: 450px;
+    height: 260px;
+    position: relative;
+    &_da {
+      width: 200px;
+      height: 170px;
+      @include theme-visual_cards_position(45px, none, none, 99);
+    }
+    &_da-front {
+      margin-top: 0px;
+      width: 200px;
+      height: 170px;
+      @include theme-visual_cards_position(none, 70px, 50px, 1);
+    }
+  }
+}
+
+.theme-visual_header-da {
+  width: 97%;
+  @include theme-visual-header(white, "Figtree", sans-serif);
+
+  &_players {
+    @include flex(center, center, row);
+    background-color: #ffffff;
+    width: 100px;
+    height: 25px;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 7px;
+
+    &_img {
+      width: 15px;
+      height: 15px;
+    }
+
+    &_text-blue,
+    &_number-blue {
+      color: #097fc5;
+      font-size: 15px;
+      font-family: "Figtree", sans-serif;
+    }
+
+    &_text-orange,
+    &_number-orange {
+      color: #ea6900;
+      font-size: 15px;
+      font-family: "Figtree", sans-serif;
+    }
+  }
+
+  &_current {
+    @include flex(none, center, row);
+    gap: 10px;
+    &_text {
+      color: #1e7594;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: "Figtree", sans-serif;
+    }
+    &_img {
+      width: 35px;
+      height: 20px;
+    }
+  }
+
+  &_exit {
+    @include flex(center, center, row);
+    background-color: #bfe5f2;
+    border-radius: 7px;
+    width: 100px;
+    height: 25px;
+    gap: 10px;
+    padding: 2px 3px;
+
+    &_img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &_text {
+      color: #1e7594;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: "Red Rose", sans-serif;
+    }
+  }
+}
+
+//theme da end
+
+//theme food begin
+
+.theme-visual-food {
+  @include theme-visual(#e8e2dc);
+
+  &_cards {
+    width: 450px;
+    height: 260px;
+    position: relative;
+    &_food_back {
+      width: 200px;
+      height: 200px;
+      @include theme-visual_cards_position(45px, none, none, 99);
+    }
+    &_food_front {
+      margin-top: 0px;
+      width: 200px;
+      height: 200px;
+      @include theme-visual_cards_position(none, 70px, 50px, 1);
+    }
+  }
+}
+
+.theme-visual_header-food {
+  width: 97%;
+  @include theme-visual-header(white, "KleeOne", sans-serif, 7px);
+
+  &_players {
+    @include flex(center, center, row);
+    background-color: #ffffff;
+    width: 100px;
+    height: 25px;
+    gap: 6px;
+    padding: 5px;
+    border-radius: 7px;
+
+    &_img {
+      width: 15px;
+      height: 15px;
+    }
+
+    &_number-blue {
+      color: #097fc5;
+      font-size: 13px;
+      font-weight: 900;
+      font-family: "KleeOne", sans-serif;
+    }
+
+    &_number-orange {
+      color: #ea6900;
+      font-size: 13px;
+      font-weight: 900;
+      font-family: "KleeOne", sans-serif;
+    }
+  }
+
+  &_current {
+    @include flex(none, center, row);
+    gap: 5px;
+    &_text {
+      color: #1e7594;
+      font-size: 13px;
+      font-weight: 900;
+      font-family: "KleeOne", sans-serif;
+    }
+    &_img {
+      width: 30px;
+      height: 17px;
+    }
+  }
+
+  &_exit {
+    @include flex(center, center, row);
+    border-radius: 7px;
+    width: 100px;
+    height: 25px;
+    gap: 10px;
+    padding: 2px 3px;
+    border: 1px solid #f3832d;
+
+    &_img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &_text {
+      color: #f3832d;
+      font-size: 12px;
+      font-weight: 900;
+      font-family: "KleeOne", sans-serif;
+    }
+  }
+}
