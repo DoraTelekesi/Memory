@@ -20,6 +20,7 @@ const selectedPlayer = document.getElementById("selected-player") as HTMLParagra
 const selectedSize = document.getElementById("selected-size") as HTMLParagraphElement;
 
 const themeVisualContent = document.getElementById("theme-visual-content") as HTMLDivElement;
+const startBtn = document.getElementById("start-btn") as HTMLButtonElement;
 
 let themeSelection: (HTMLElement | null)[] = [codeVibesSelection, gamingSelection, daProjectsSelection, foodsSelection];
 let themeSelectionTemplate: (string | null)[] = [
@@ -28,6 +29,10 @@ let themeSelectionTemplate: (string | null)[] = [
   daProjectsSelectionTemplate,
   foodsSelectionTemplate,
 ];
+
+let themeSelected: string = "code-vibes-selected";
+let playerSelected: string = "blue-selected";
+let sizeSelected: string = "small-selected";
 
 themeSelection.forEach((selection) => {
   selection?.addEventListener("click", (e) => {
@@ -38,9 +43,10 @@ themeSelection.forEach((selection) => {
 
     if (selection) {
       selection.classList.add("is-selected");
-      console.log(selection);
       selectedTheme.textContent = `${selection.textContent}`;
       themeVisualContent.innerHTML = themeSelectionTemplate[themeSelection.indexOf(selection)] || "";
+      console.log(selection.id);
+      themeSelected = selection.id;
     }
     themeSelection.forEach((otherSelection) => {
       if (otherSelection !== selection) {
@@ -61,6 +67,7 @@ colorSelection.forEach((selection) => {
     if (selection) {
       selection.classList.add("is-selected");
       selectedPlayer.textContent = `${selection.textContent}`;
+      playerSelected = selection.id;
     }
     colorSelection.forEach((otherSelection) => {
       if (otherSelection !== selection) {
@@ -81,6 +88,7 @@ sizeSelection.forEach((selection) => {
     if (selection) {
       selection.classList.add("is-selected");
       selectedSize.textContent = `${selection.textContent}`;
+      sizeSelected = selection.id;
     }
     sizeSelection.forEach((otherSelection) => {
       if (otherSelection !== selection) {
@@ -88,4 +96,9 @@ sizeSelection.forEach((selection) => {
       }
     });
   });
+});
+
+startBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  window.location.href = `game-play.html?theme=${themeSelected}&player=${playerSelected}&size=${sizeSelected}`;
 });

@@ -133,7 +133,6 @@ input[type="radio"] {
 .chosen-setup {
   gap: 20px;
   @include flex(none, center, row);
-
   > .start_btn {
     @include flex(center, center, row);
     gap: 5px;
