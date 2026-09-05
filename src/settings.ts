@@ -34,6 +34,9 @@ let themeSelected: string = "code-vibes-selected";
 let playerSelected: string = "blue-selected";
 let sizeSelected: string = "small-selected";
 
+
+
+
 themeSelection.forEach((selection) => {
   selection?.addEventListener("click", (e) => {
     // Ignore the duplicated event originating from the radio input
@@ -45,7 +48,6 @@ themeSelection.forEach((selection) => {
       selection.classList.add("is-selected");
       selectedTheme.textContent = `${selection.textContent}`;
       themeVisualContent.innerHTML = themeSelectionTemplate[themeSelection.indexOf(selection)] || "";
-      console.log(selection.id);
       themeSelected = selection.id;
     }
     themeSelection.forEach((otherSelection) => {
@@ -99,6 +101,11 @@ sizeSelection.forEach((selection) => {
 });
 
 startBtn.addEventListener("click", (event) => {
+  if (selectedTheme.textContent == "Game Theme" || selectedPlayer.textContent == "Player" || selectedSize.textContent == "Board Size") {
+    alert("Please select a game theme, player and board size before starting the game.");
+    event.preventDefault();
+    return;
+  }
   event.preventDefault();
   window.location.href = `game-play.html?theme=${themeSelected}&player=${playerSelected}&size=${sizeSelected}`;
 });
