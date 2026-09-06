@@ -29,7 +29,6 @@ if (themeSelected === "code-vibes-selection") {
 
 const cardBoard = document.getElementById("card-board") as HTMLElement;
 
-
 if (sizeSelected === "small-selection") {
   if (themeSelected === "code-vibes-selection") createCardBoard("card_pc", 16);
   else if (themeSelected === "gaming-selection") createCardBoard("card_game", 16);
@@ -54,15 +53,34 @@ if (sizeSelected === "large-selection") {
 function createCardBoard(cardType: string, size: number) {
   for (let i = 0; i < size; i++) {
     const card = document.createElement("div");
+    const cardInner = document.createElement("div");
+    cardInner.className = "card-inner";
+    card.appendChild(cardInner);
     card.className = "card";
+    card.setAttribute("id", `card_${i + 1}`);
     const cardFront = document.createElement("img");
     cardFront.className = "card-front";
-    card.appendChild(cardFront);
+    cardInner.appendChild(cardFront);
     const cardBack = document.createElement("img");
     cardBack.src = `assets/img/${cardType}_back.png`;
     cardBack.className = "card-back";
-    card.appendChild(cardBack);
+    cardInner.appendChild(cardBack);
     cardBoard.appendChild(card);
-    cardBoard.style.gridTemplateColumns = `repeat(${size==16 ? 4 : size==24 ? 6 : 6}, 110px)`;
+    cardBoard.style.gridTemplateColumns = `repeat(${size == 16 ? 4 : size == 24 ? 6 : 6}, 110px)`;
   }
+}
+
+const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
+
+let frontCardList: string[] = ["git", "ts", "js", "html", "css", "vsc", "django", "angular"];
+
+for (let i = 0; i < cards.length; i++) {
+  const cardFront = (cards[i].childNodes[0] as HTMLElement).childNodes[0] as HTMLImageElement;
+  const cardBack = (cards[i].childNodes[0] as HTMLElement).childNodes[1] as HTMLImageElement;
+  const cardInner = cards[i].childNodes[0] as HTMLElement;
+  cards[i].addEventListener("click", () => {
+    const card = cards[i];
+    cardFront.src = `assets/img/card_${frontCardList[i % frontCardList.length]}_front.png`;
+    cardInner.classList.add("is-flipped");
+  });
 }
