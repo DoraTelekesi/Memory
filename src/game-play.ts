@@ -73,14 +73,47 @@ function createCardBoard(cardType: string, size: number) {
 const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
 
 let frontCardList: string[] = ["git", "ts", "js", "html", "css", "vsc", "django", "angular"];
+let flippedAmount: number = 0;
+let frontCardValue: string[] = [];
+let selectedCard: HTMLElement[] = [];
+let gameDone: boolean = false;
 
 for (let i = 0; i < cards.length; i++) {
   const cardFront = (cards[i].childNodes[0] as HTMLElement).childNodes[0] as HTMLImageElement;
-  const cardBack = (cards[i].childNodes[0] as HTMLElement).childNodes[1] as HTMLImageElement;
   const cardInner = cards[i].childNodes[0] as HTMLElement;
   cards[i].addEventListener("click", () => {
-    const card = cards[i];
-    cardFront.src = `assets/img/card_${frontCardList[i % frontCardList.length]}_front.png`;
-    cardInner.classList.add("is-flipped");
+    let flipped: boolean = false;
+    if (!flipped && !gameDone) {
+      cardFront.src = `assets/img/card_${frontCardList[i % frontCardList.length]}_front.png`;
+      cardInner.classList.add("is-flipped");
+      flipped = true;
+      flippedAmount++;
+      frontCardValue.push(frontCardList[i % frontCardList.length]);
+      selectedCard.push(cards[i]);
+      if (flippedAmount === 2 && frontCardValue[0] !== frontCardValue[1]) {
+        setTimeout(() => {
+          document.querySelectorAll(".is-flipped").forEach((el) => {
+            (el as HTMLElement).classList.remove("is-flipped");
+          });
+          flipped = false;
+          frontCardValue = [];
+          flippedAmount = 0;
+          selectedCard = [];
+        }, 1000);
+      } else if (flippedAmount === 2 && frontCardValue[0] === frontCardValue[1]) {
+        selectedCard.forEach((card) => {
+          (card.childNodes[0] as HTMLElement).classList.add("stay-flipped");
+          (card.childNodes[0] as HTMLElement).classList.remove("is-flipped");
+        });
+
+        if (document.querySelectorAll(".stay-flipped").length === cards.length) {
+          gameDone = true;
+        }
+        selectedCard = [];
+        flipped = false;
+        frontCardValue = [];
+        flippedAmount = 0;
+      }
+    }
   });
 }
