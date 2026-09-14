@@ -54,18 +54,18 @@ function createCardBoard(cardType: string, size: number) {
   for (let i = 0; i < size; i++) {
     const card = document.createElement("div");
     const cardInner = document.createElement("div");
-    cardInner.className = "card-inner";
-    card.appendChild(cardInner);
-    card.className = "card";
-    card.setAttribute("id", `card_${i + 1}`);
-    const cardFront = document.createElement("img");
-    cardFront.className = "card-front";
-    cardInner.appendChild(cardFront);
     const cardBack = document.createElement("img");
-    cardBack.src = `assets/img/${cardType}_back.png`;
-    cardBack.className = "card-back";
+    const cardFront = document.createElement("img");
+    card.appendChild(cardInner);
+    cardInner.appendChild(cardFront);
     cardInner.appendChild(cardBack);
     cardBoard.appendChild(card);
+    cardInner.className = "card-inner";
+    card.className = "card";
+    card.setAttribute("id", `card_${i + 1}`);
+    cardFront.className = "card-front";
+    cardBack.src = `assets/img/${cardType}_back.png`;
+    cardBack.className = "card-back";
     cardBoard.style.gridTemplateColumns = `repeat(${size == 16 ? 4 : size == 24 ? 6 : 6}, 110px)`;
   }
 }
@@ -77,43 +77,55 @@ let flippedAmount: number = 0;
 let frontCardValue: string[] = [];
 let selectedCard: HTMLElement[] = [];
 let gameDone: boolean = false;
+let flipped: boolean = false;
 
 for (let i = 0; i < cards.length; i++) {
   const cardFront = (cards[i].childNodes[0] as HTMLElement).childNodes[0] as HTMLImageElement;
   const cardInner = cards[i].childNodes[0] as HTMLElement;
   cards[i].addEventListener("click", () => {
-    let flipped: boolean = false;
+    flipped = false;
     if (!flipped && !gameDone) {
-      cardFront.src = `assets/img/card_${frontCardList[i % frontCardList.length]}_front.png`;
-      cardInner.classList.add("is-flipped");
-      flipped = true;
-      flippedAmount++;
-      frontCardValue.push(frontCardList[i % frontCardList.length]);
-      selectedCard.push(cards[i]);
-      if (flippedAmount === 2 && frontCardValue[0] !== frontCardValue[1]) {
-        setTimeout(() => {
-          document.querySelectorAll(".is-flipped").forEach((el) => {
-            (el as HTMLElement).classList.remove("is-flipped");
-          });
-          flipped = false;
-          frontCardValue = [];
-          flippedAmount = 0;
-          selectedCard = [];
-        }, 1000);
-      } else if (flippedAmount === 2 && frontCardValue[0] === frontCardValue[1]) {
-        selectedCard.forEach((card) => {
-          (card.childNodes[0] as HTMLElement).classList.add("stay-flipped");
-          (card.childNodes[0] as HTMLElement).classList.remove("is-flipped");
-        });
-
-        if (document.querySelectorAll(".stay-flipped").length === cards.length) {
-          gameDone = true;
-        }
-        selectedCard = [];
-        flipped = false;
-        frontCardValue = [];
-        flippedAmount = 0;
-      }
+      flipCard(cardFront, cardInner, i);
     }
   });
+}
+
+function noMatch() {
+  setTimeout(() => {
+    document.querySelectorAll(".is-flipped").forEach((el) => {
+      (el as HTMLElement).classList.remove("is-flipped");
+    });
+    flipped = false;
+    frontCardValue = [];
+    flippedAmount = 0;
+    selectedCard = [];
+  }, 1000);
+}
+
+function cardMatch() {
+  selectedCard.forEach((card) => {
+    (card.childNodes[0] as HTMLElement).classList.add("stay-flipped");
+    (card.childNodes[0] as HTMLElement).classList.remove("is-flipped");
+  });
+  if (document.querySelectorAll(".stay-flipped").length === cards.length) {
+    gameDone = true;
+  }
+  selectedCard = [];
+  flipped = false;
+  frontCardValue = [];
+  flippedAmount = 0;
+}
+
+function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
+  front.src = `assets/img/card_${frontCardList[index % frontCardList.length]}_front.png`;
+  inner.classList.add("is-flipped");
+  flipped = true;
+  flippedAmount++;
+  frontCardValue.push(frontCardList[index % frontCardList.length]);
+  selectedCard.push(cards[index]);
+  if (flippedAmount === 2 && frontCardValue[0] !== frontCardValue[1]) {
+    noMatch();
+  } else if (flippedAmount === 2 && frontCardValue[0] === frontCardValue[1]) {
+    cardMatch();
+  }
 }
