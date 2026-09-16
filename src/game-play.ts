@@ -72,7 +72,32 @@ function createCardBoard(cardType: string, size: number) {
 
 const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
 
-let frontCardList: string[] = ["git", "ts", "js", "html", "css", "vsc", "django", "angular"];
+let frontCardListCode: string[] = ["git", "ts", "js", "html", "css", "vsc", "django", "angular"];
+let frontCardListGame: string[] = ["squid_g_1", "squid_g_2", "squid_g_3", "laby", "mushroom", "pac_man", "dog", "controller"];
+let frontCardListFood: string[] = ["fries", "pizza", "donut", "corndog", "sushi", "hamburger", "cake", "cupcake"];
+let frontCardListDaProjects: string[] = [
+  "sakura_1",
+  "sakura_2",
+  "sakura_3",
+  "join",
+  "pokedex",
+  "dabubble",
+  "pollo_loco",
+  "shark",
+  "coin",
+  "cook_1",
+  "cook_2",
+  "bestell",
+  "smiley",
+  "profile",
+  "vi",
+  "da_projekt_2",
+  "da_projekt",
+  "sakura_4",
+];
+
+console.log(themeSelected, sizeSelected);
+
 let flippedAmount: number = 0;
 let frontCardValue: string[] = [];
 let selectedCard: HTMLElement[] = [];
@@ -116,12 +141,53 @@ function cardMatch() {
   flippedAmount = 0;
 }
 
+function frontCardListSelector(theme: string): string[] {
+  let frontCardList: string[] = [];
+  if (theme === "code-vibes-selection") {
+    frontCardList = frontCardListCode;
+  } else if (theme === "gaming-selection") {
+    frontCardList = frontCardListGame;
+  } else if (theme === "da-projects-selection") {
+    frontCardList = frontCardListDaProjects;
+  } else if (theme === "foods-selection") {
+    frontCardList = frontCardListFood;
+  }
+  return frontCardList;
+}
+
+let frontCardArray = frontCardListSelector(themeSelected);
+
+function sizeSelector(size: string) {
+  let boardSize: number = 0;
+  if (size === "small-selection") {
+    boardSize = 16; // 8
+  } else if (size === "medium-selection") {
+    boardSize = 24; // 12
+  } else if (size === "large-selection") {
+    boardSize = 36; // 18
+  }
+  return boardSize;
+}
+
+let boardSizeNumber = sizeSelector(sizeSelected);
+
+function shuffleFrontCards(arr: string[]) {
+  let currentIndex = arr.length;
+  while (currentIndex != 0) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
+  }
+}
+
+shuffleFrontCards(frontCardArray);
+
 function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
-  front.src = `assets/img/card_${frontCardList[index % frontCardList.length]}_front.png`;
+  front.src = `assets/img/card_${frontCardArray[index % (boardSizeNumber / 2)]}_front.png`;
   inner.classList.add("is-flipped");
   flipped = true;
   flippedAmount++;
-  frontCardValue.push(frontCardList[index % frontCardList.length]);
+  frontCardValue.push(frontCardArray[index % (boardSizeNumber / 2)]);
   selectedCard.push(cards[index]);
   if (flippedAmount === 2 && frontCardValue[0] !== frontCardValue[1]) {
     noMatch();
