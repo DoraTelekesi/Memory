@@ -16,7 +16,7 @@ export const codeVibesGamePlayTheme = `<div class="content-wrapper_code-vibes">
             <p class="theme-visual_header_current_text">Current Player:</p>
             <img src="assets/icon/label_blue.svg" alt="blue label" class="theme-visual_header_current_img" />
           </div>
-          <div class="theme-visual_header_exit">
+          <div class="theme-visual_header_exit" id="exit">
             <img src="assets/icon/move_item.svg" alt="exit" class="theme-visual_header_exit_img" />
             <p class="theme-visual_header_exit_text">Exit Game</p>
           </div>
@@ -37,7 +37,7 @@ export const gamingGamePlayTheme = `<div class="content-wrapper_gaming">
             <p class="theme-visual_header-game_current_text">Current Player:</p>
             <img src="assets/icon/chess_pawn_blue_bg_white.svg" alt="blue label" class="theme-visual_header-game_current_img" />
           </div>
-          <div class="theme-visual_header-game_exit">
+          <div class="theme-visual_header-game_exit" id="exit">
             <img src="assets/icon/move_item_pink.svg" alt="exit" class="theme-visual_header-game_exit_img" />
             <p class="theme-visual_header-game_exit_text">Exit Game</p>
           </div>
@@ -58,7 +58,7 @@ export const daProjectsGamePlayTheme = `<div class="content-wrapper_da-projects"
             <p class="theme-visual_header-da_current_text">Current Player:</p>
             <img src="assets/icon/current_player_dark_blue.svg" alt="blue label" class="theme-visual_header-da_current_img" />
           </div>
-          <div class="theme-visual_header-da_exit">
+          <div class="theme-visual_header-da_exit" id="exit">
             <img src="assets/icon/exit_blue.svg" alt="exit" class="theme-visual_header-da_exit_img" />
             <p class="theme-visual_header-da_exit_text">Exit Game</p>
           </div>
@@ -77,10 +77,12 @@ export const foodsGamePlayTheme = `<div class="content-wrapper_food">
             <p class="theme-visual_header-food_current_text">Current Player:</p>
             <img src="assets/icon/current_player_dark_blue.svg" alt="blue label" class="theme-visual_header-food_current_img" />
           </div>
-          <div class="theme-visual_header-food_exit">
+          <div class="theme-visual_header-food_exit" id="exit">
             <img src="assets/icon/exit_orange.svg" alt="exit" class="theme-visual_header-food_exit_img" />
             <p class="theme-visual_header-food_exit_text">EXIT GAME</p>
           </div>
         </div>
         <main id="card-board" class="card-board"></main>
       </div>`;
+
+

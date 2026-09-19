@@ -2,6 +2,7 @@ import "./styles/settings/settings_main.scss";
 import "./styles/settings/themes.scss";
 import "./styles/game-play.scss";
 import { codeVibesGamePlayTheme, gamingGamePlayTheme, daProjectsGamePlayTheme, foodsGamePlayTheme } from "./templates/game-play-themes";
+import { exitPopUp } from "./templates/exit-themes";
 
 const mainContent = document.getElementById("main-content") as HTMLElement;
 
@@ -64,6 +65,10 @@ function createCardBoard(cardType: string, size: number) {
     card.className = "card";
     card.setAttribute("id", `card_${i + 1}`);
     cardFront.className = "card-front";
+    if (themeSelected === "gaming-selection") {
+      cardFront.style.height = "120px";
+      cardBack.style.height = "120px";
+    }
     cardBack.src = `assets/img/${cardType}_back.png`;
     cardBack.className = "card-back";
     cardBoard.style.gridTemplateColumns = `repeat(${size == 16 ? 4 : size == 24 ? 6 : 6}, 110px)`;
@@ -258,3 +263,9 @@ function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
     cardMatch();
   }
 }
+
+const exitButton = document.getElementById("exit") as HTMLElement;
+const popUp = document.getElementById("popup") as HTMLElement;
+exitButton?.addEventListener("click", function () {
+  popUp.innerHTML += exitPopUp;
+});
