@@ -72,9 +72,66 @@ function createCardBoard(cardType: string, size: number) {
 
 const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
 
-let frontCardListCode: string[] = ["git", "ts", "js", "html", "css", "vsc", "django", "angular"];
-let frontCardListGame: string[] = ["squid_g_1", "squid_g_2", "squid_g_3", "laby", "mushroom", "pac_man", "dog", "controller"];
-let frontCardListFood: string[] = ["fries", "pizza", "donut", "corndog", "sushi", "hamburger", "cake", "cupcake"];
+let frontCardListCode: string[] = [
+  "git",
+  "ts",
+  "js",
+  "html",
+  "css",
+  "vsc",
+  "django",
+  "angular",
+  "cmd",
+  "python",
+  "github",
+  "node",
+  "bootstrap",
+  "vue",
+  "react",
+  "sass",
+  "sql",
+  "firestore",
+];
+let frontCardListGame: string[] = [
+  "squid_g_1",
+  "squid_g_2",
+  "squid_g_3",
+  "laby",
+  "mushroom",
+  "pac_man",
+  "dog",
+  "controller",
+  "snake",
+  "tetris",
+  "dice",
+  "play",
+  "card",
+  "puzzle",
+  "badge",
+  "pacman_big",
+  "star_coin",
+  "banana",
+];
+let frontCardListFood: string[] = [
+  "fries",
+  "pizza",
+  "donut",
+  "corndog",
+  "sushi",
+  "hamburger",
+  "cake",
+  "cupcake",
+  "brezel",
+  "chocolate",
+  "ice_cream",
+  "macaron",
+  "panna_cotta",
+  "sandwich",
+  "salad",
+  "wrap",
+  "taco",
+  "chicken",
+];
 let frontCardListDaProjects: string[] = [
   "sakura_1",
   "sakura_2",
@@ -157,20 +214,6 @@ function frontCardListSelector(theme: string): string[] {
 
 let frontCardArray = frontCardListSelector(themeSelected);
 
-function sizeSelector(size: string) {
-  let boardSize: number = 0;
-  if (size === "small-selection") {
-    boardSize = 16; // 8
-  } else if (size === "medium-selection") {
-    boardSize = 24; // 12
-  } else if (size === "large-selection") {
-    boardSize = 36; // 18
-  }
-  return boardSize;
-}
-
-let boardSizeNumber = sizeSelector(sizeSelected);
-
 function shuffleFrontCards(arr: string[]) {
   let currentIndex = arr.length;
   while (currentIndex != 0) {
@@ -180,14 +223,34 @@ function shuffleFrontCards(arr: string[]) {
   }
 }
 
+function sizeSelector(size: string) {
+  let boardSize: number = 0;
+  if (size === "small-selection") {
+    boardSize = 16; // 8
+    frontCardArray = frontCardArray.splice(0, 16);
+  } else if (size === "medium-selection") {
+    boardSize = 24; // 12
+    frontCardArray = frontCardArray.splice(0, 12);
+  } else if (size === "large-selection") {
+    boardSize = 36; // 18
+    frontCardArray = frontCardArray.splice(0, 36);
+  }
+  return boardSize;
+}
+
+let boardSizeNumber = sizeSelector(sizeSelected);
+
+let frontCardArraySecondHalf = [...frontCardArray];
 shuffleFrontCards(frontCardArray);
+shuffleFrontCards(frontCardArraySecondHalf);
+let frontCardArrayCombined = frontCardArray.concat(frontCardArraySecondHalf);
 
 function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
-  front.src = `assets/img/card_${frontCardArray[index % (boardSizeNumber / 2)]}_front.png`;
+  front.src = `assets/img/frontcards/card_${frontCardArrayCombined[index % boardSizeNumber]}_front.png`;
   inner.classList.add("is-flipped");
   flipped = true;
   flippedAmount++;
-  frontCardValue.push(frontCardArray[index % (boardSizeNumber / 2)]);
+  frontCardValue.push(frontCardArrayCombined[index % boardSizeNumber]);
   selectedCard.push(cards[index]);
   if (flippedAmount === 2 && frontCardValue[0] !== frontCardValue[1]) {
     noMatch();
