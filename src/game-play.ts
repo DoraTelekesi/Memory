@@ -2,7 +2,7 @@ import "./styles/settings/settings_main.scss";
 import "./styles/settings/themes.scss";
 import "./styles/game-play.scss";
 import { codeVibesGamePlayTheme, gamingGamePlayTheme, daProjectsGamePlayTheme, foodsGamePlayTheme } from "./templates/game-play-themes";
-import { exitPopUp } from "./templates/exit-themes";
+import { exitPopUpFood, exitPopUpCode, exitPopUpDAProjects, exitPopUpGame } from "./templates/exit-themes";
 
 const mainContent = document.getElementById("main-content") as HTMLElement;
 
@@ -232,13 +232,13 @@ function sizeSelector(size: string) {
   let boardSize: number = 0;
   if (size === "small-selection") {
     boardSize = 16; // 8
-    frontCardArray = frontCardArray.splice(0, 16);
+    frontCardArray = frontCardArray.splice(0, 8);
   } else if (size === "medium-selection") {
     boardSize = 24; // 12
     frontCardArray = frontCardArray.splice(0, 12);
   } else if (size === "large-selection") {
     boardSize = 36; // 18
-    frontCardArray = frontCardArray.splice(0, 36);
+    frontCardArray = frontCardArray.splice(0, 18);
   }
   return boardSize;
 }
@@ -266,6 +266,31 @@ function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
 
 const exitButton = document.getElementById("exit") as HTMLElement;
 const popUp = document.getElementById("popup") as HTMLElement;
+
 exitButton?.addEventListener("click", function () {
-  popUp.innerHTML += exitPopUp;
+  switch (themeSelected) {
+    case "code-vibes-selection":
+      popUp.innerHTML += exitPopUpCode;
+      break;
+    case "foods-selection":
+      popUp.innerHTML += exitPopUpFood;
+      break;
+    case "gaming-selection":
+      popUp.innerHTML += exitPopUpGame;
+      break;
+    case "da-projects-selection":
+      popUp.innerHTML += exitPopUpDAProjects;
+      break;
+  }
+
+  const backToGame = document.getElementById("back-btn") as HTMLButtonElement;
+  const exitGame = document.getElementById("exit-btn") as HTMLButtonElement;
+
+  backToGame?.addEventListener("click", function () {
+    popUp.innerHTML = "";
+  });
+
+  exitGame?.addEventListener("click", function () {
+    window.location.href = "settings.html";
+  });
 });

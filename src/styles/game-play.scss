@@ -149,3 +149,118 @@
   border-radius: 8px;
   font-weight: 900;
 }
+
+.popup-container_code-vibes {
+  background-color: white;
+  width: 416px;
+  height: 216px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  .popup-title_text {
+    font-size: 28px;
+    color: #303131;
+    font-family: "Red Rose", sans-serif;
+  }
+
+  .buttons {
+    .back-btn {
+      color: white;
+      background-color: #66cfbc;
+      font-family: "Red Rose", sans-serif;
+      border-radius: 2px;
+      border: #4dd5bc solid 2px;
+    }
+
+    .exit-btn {
+      font-family: "Red Rose", sans-serif;
+      background-color: #86e9d624;
+      color: #4dd5bc;
+      border: #4dd5bc solid 2px;
+      border-radius: 2px;
+    }
+  }
+}
+
+.popup-container_game {
+  background-color: #f0f6f9;
+  width: 416px;
+  height: 216px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+
+  .popup-title_text {
+    font-size: 28px;
+    color: #294f60;
+    font-family: "Orbitron", sans-serif;
+  }
+
+  .buttons {
+    .back-btn {
+      color: white;
+      background-color: #ed1b76;
+      font-family: "Orbitron", sans-serif;
+      border-radius: 10px;
+      font-size: 16px;
+      border: #e71c4f solid 1px;
+    }
+
+    .exit-btn {
+      font-family: "Orbitron", sans-serif;
+      background-color: #ed1b7614;
+      color: #ed1b76;
+      border: #ed1b76 solid 2px;
+      border-radius: 10px;
+    }
+  }
+}
+
+.popup-container_da_projects {
+  background-color: #f0f6f9;
+  width: 416px;
+  height: 216px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+
+  .popup-title_text {
+    font-size: 28px;
+    color: #294f60;
+    font-family: "Figtree", sans-serif;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 20px;
+    .back-btn {
+      color: #1e7594;
+      background-color: #bfe5f2;
+      font-family: "Figtree", sans-serif;
+      border-radius: 10px;
+      font-size: 16px;
+      border: none;
+      padding: 10px 15px 10px 15px;
+      box-shadow: 3px 3px 5px 0px #2f2e2e33;
+    }
+
+    .exit-btn {
+      font-family: "Figtree", sans-serif;
+      background-color: #fd8a81;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px 10px 15px;
+      box-shadow: 3px 3px 5px 0px #2f2e2e33;
+    }
+  }
+}
