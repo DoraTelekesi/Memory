@@ -7,14 +7,14 @@ export const codeVibesGamePlayTheme = `<div class="content-wrapper_code-vibes">
           <div class="theme-visual_header_players">
             <img src="assets/icon/label_blue.svg" alt="blue label" class="theme-visual_header_players_img" />
             <p class="theme-visual_header_players_text-blue">Blue</p>
-            <p class="theme-visual_header_players_number-blue">0</p>
+            <p class="theme-visual_header_players_number-blue" id="blue-points">0</p>
             <img src="assets/icon/label_orange.svg" alt="orange label" class="theme-visual_header_players_img" />
             <p class="theme-visual_header_players_text-orange">Orange</p>
-            <p class="theme-visual_header_players_number-orange">6</p>
+            <p class="theme-visual_header_players_number-orange"  id="orange-points">0</p>
           </div>
           <div class="theme-visual_header_current">
             <p class="theme-visual_header_current_text">Current Player:</p>
-            <img src="assets/icon/label_blue.svg" alt="blue label" class="theme-visual_header_current_img" />
+            <img src="assets/icon/label_blue.svg" alt="blue label" class="theme-visual_header_current_img"  id="current-player" />
           </div>
           <div class="theme-visual_header_exit" id="exit">
             <img src="assets/icon/move_item.svg" alt="exit" class="theme-visual_header_exit_img" />
@@ -35,7 +35,7 @@ export const gamingGamePlayTheme = `<div class="content-wrapper_gaming">
           </div>
           <div class="theme-visual_header-game_current">
             <p class="theme-visual_header-game_current_text">Current Player:</p>
-            <img src="assets/icon/chess_pawn_blue_bg_white.svg" alt="blue label" class="theme-visual_header-game_current_img" />
+            <img src="assets/icon/chess_pawn_blue_bg_white.svg" alt="blue label" class="theme-visual_header-game_current_img"  id="current-player" />
           </div>
           <div class="theme-visual_header-game_exit" id="exit">
             <img src="assets/icon/move_item_pink.svg" alt="exit" class="theme-visual_header-game_exit_img" />
@@ -56,7 +56,7 @@ export const daProjectsGamePlayTheme = `<div class="content-wrapper_da-projects"
           </div>
           <div class="theme-visual_header-da_current">
             <p class="theme-visual_header-da_current_text">Current Player:</p>
-            <img src="assets/icon/current_player_dark_blue.svg" alt="blue label" class="theme-visual_header-da_current_img" />
+            <img src="assets/icon/current_player_dark_blue.svg" alt="blue label" class="theme-visual_header-da_current_img"  id="current-player" />
           </div>
           <div class="theme-visual_header-da_exit" id="exit">
             <img src="assets/icon/exit_blue.svg" alt="exit" class="theme-visual_header-da_exit_img" />
@@ -75,7 +75,7 @@ export const foodsGamePlayTheme = `<div class="content-wrapper_food">
           </div>
           <div class="theme-visual_header-food_current">
             <p class="theme-visual_header-food_current_text">Current Player:</p>
-            <img src="assets/icon/current_player_dark_blue.svg" alt="blue label" class="theme-visual_header-food_current_img" />
+            <img src="assets/icon/current_player_dark_blue.svg" alt="blue label" class="theme-visual_header-food_current_img"  id="current-player" />
           </div>
           <div class="theme-visual_header-food_exit" id="exit">
             <img src="assets/icon/exit_orange.svg" alt="exit" class="theme-visual_header-food_exit_img" />
@@ -84,5 +84,3 @@ export const foodsGamePlayTheme = `<div class="content-wrapper_food">
         </div>
         <main id="card-board" class="card-board"></main>
       </div>`;
-
-

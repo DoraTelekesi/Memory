@@ -3,6 +3,7 @@ import "./styles/settings/themes.scss";
 import "./styles/game-play.scss";
 import { codeVibesGamePlayTheme, gamingGamePlayTheme, daProjectsGamePlayTheme, foodsGamePlayTheme } from "./templates/game-play-themes";
 import { exitPopUpFood, exitPopUpCode, exitPopUpDAProjects, exitPopUpGame } from "./templates/exit-themes";
+import { frontCardListCode, frontCardListDaProjects, frontCardListGame, frontCardListFood } from "./dataset";
 
 const mainContent = document.getElementById("main-content") as HTMLElement;
 
@@ -28,6 +29,12 @@ if (themeSelected === "code-vibes-selection") {
   mainContent.innerHTML = foodsGamePlayTheme;
 }
 
+let current: "blue" | "orange" = playerSelected === "blue-selection" ? "blue" : "orange";
+let winner: string = "";
+let bluePoints: number = 0;
+let orangePoints: number = 0;
+
+const currentPlayer = document.getElementById("current-player") as HTMLImageElement;
 const cardBoard = document.getElementById("card-board") as HTMLElement;
 
 if (sizeSelected === "small-selection") {
@@ -73,92 +80,28 @@ function createCardBoard(cardType: string, size: number) {
     cardBack.className = "card-back";
     cardBoard.style.gridTemplateColumns = `repeat(${size == 16 ? 4 : size == 24 ? 6 : 6}, 110px)`;
   }
+  chooseFirstCurrentPlayer();
+}
+
+function chooseFirstCurrentPlayer() {
+  if (playerSelected === "blue-selection") {
+    currentPlayer.style.filter = "invert(0)";
+    current = "blue";
+  } else if (playerSelected === "orange-selection") {
+    currentPlayer.style.filter = "invert(50)";
+    current = "orange";
+  }
+}
+
+function switchPlayer() {
+  if (current == "orange") {
+    currentPlayer.style.filter = "invert(50)";
+  } else if (current == "blue") {
+    currentPlayer.style.filter = "invert(0)";
+  }
 }
 
 const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
-
-let frontCardListCode: string[] = [
-  "git",
-  "ts",
-  "js",
-  "html",
-  "css",
-  "vsc",
-  "django",
-  "angular",
-  "cmd",
-  "python",
-  "github",
-  "node",
-  "bootstrap",
-  "vue",
-  "react",
-  "sass",
-  "sql",
-  "firestore",
-];
-let frontCardListGame: string[] = [
-  "squid_g_1",
-  "squid_g_2",
-  "squid_g_3",
-  "laby",
-  "mushroom",
-  "pac_man",
-  "dog",
-  "controller",
-  "snake",
-  "tetris",
-  "dice",
-  "play",
-  "card",
-  "puzzle",
-  "badge",
-  "pacman_big",
-  "star_coin",
-  "banana",
-];
-let frontCardListFood: string[] = [
-  "fries",
-  "pizza",
-  "donut",
-  "corndog",
-  "sushi",
-  "hamburger",
-  "cake",
-  "cupcake",
-  "brezel",
-  "chocolate",
-  "ice_cream",
-  "macaron",
-  "panna_cotta",
-  "sandwich",
-  "salad",
-  "wrap",
-  "taco",
-  "chicken",
-];
-let frontCardListDaProjects: string[] = [
-  "sakura_1",
-  "sakura_2",
-  "sakura_3",
-  "join",
-  "pokedex",
-  "dabubble",
-  "pollo_loco",
-  "shark",
-  "coin",
-  "cook_1",
-  "cook_2",
-  "bestell",
-  "smiley",
-  "profile",
-  "vi",
-  "da_projekt_2",
-  "da_projekt",
-  "sakura_4",
-];
-
-console.log(themeSelected, sizeSelected);
 
 let flippedAmount: number = 0;
 let frontCardValue: string[] = [];
@@ -250,6 +193,9 @@ shuffleFrontCards(frontCardArray);
 shuffleFrontCards(frontCardArraySecondHalf);
 let frontCardArrayCombined = frontCardArray.concat(frontCardArraySecondHalf);
 
+const bluePointRef = document.getElementById("blue-points") as HTMLElement;
+const orangePointRef = document.getElementById("orange-points") as HTMLElement;
+
 function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
   front.src = `assets/img/frontcards/card_${frontCardArrayCombined[index % boardSizeNumber]}_front.png`;
   inner.classList.add("is-flipped");
@@ -259,8 +205,25 @@ function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
   selectedCard.push(cards[index]);
   if (flippedAmount === 2 && frontCardValue[0] !== frontCardValue[1]) {
     noMatch();
+    if (current === "orange") {
+      current = "blue";
+    } else {
+      current = "orange";
+    }
+
+    switchPlayer();
   } else if (flippedAmount === 2 && frontCardValue[0] === frontCardValue[1]) {
     cardMatch();
+    if (current === "orange") {
+      orangePoints++;
+      orangePointRef.innerHTML = String(orangePoints);
+      current = "blue";
+    } else {
+      bluePoints++;
+      bluePointRef.innerHTML = String(bluePoints);
+      current = "orange";
+    }
+    switchPlayer();
   }
 }
 
