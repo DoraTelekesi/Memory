@@ -2,12 +2,12 @@ import "./styles/settings/settings_main.scss";
 import "./styles/settings/themes.scss";
 import "./styles/game-play.scss";
 import { codeVibesGamePlayTheme, gamingGamePlayTheme, daProjectsGamePlayTheme, foodsGamePlayTheme } from "./templates/game-play-themes";
-import { exitPopUpFood, exitPopUpCode, exitPopUpDAProjects, exitPopUpGame } from "./templates/exit-themes";
+/* import { exitPopUpFood, exitPopUpCode, exitPopUpDAProjects, exitPopUpGame } from "./templates/exit-themes"; */
 import { frontCardListCode, frontCardListDaProjects, frontCardListGame, frontCardListFood } from "./dataset";
 
 const mainContent = document.getElementById("main-content") as HTMLElement;
 
-let themeSelected: string;
+export let themeSelected: string;
 let playerSelected: string;
 let sizeSelected: string;
 
@@ -95,12 +95,29 @@ function chooseFirstCurrentPlayer() {
 
 function switchPlayer() {
   if (current == "orange") {
+    current = "blue";
+  } else if (current == "blue") {
+    current = "orange";
+  }
+}
+
+function switchPlayerLabel() {
+  if (current == "orange") {
     currentPlayer.style.filter = "invert(50)";
   } else if (current == "blue") {
     currentPlayer.style.filter = "invert(0)";
   }
 }
 
+function updatePoints() {
+  if (current === "orange") {
+    orangePoints++;
+    orangePointRef.innerHTML = String(orangePoints);
+  } else {
+    bluePoints++;
+    bluePointRef.innerHTML = String(bluePoints);
+  }
+}
 const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
 
 let flippedAmount: number = 0;
@@ -139,6 +156,7 @@ function cardMatch() {
   });
   if (document.querySelectorAll(".stay-flipped").length === cards.length) {
     gameDone = true;
+    console.log("GAME IS DONE");
   }
   selectedCard = [];
   flipped = false;
@@ -205,55 +223,25 @@ function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
   selectedCard.push(cards[index]);
   if (flippedAmount === 2 && frontCardValue[0] !== frontCardValue[1]) {
     noMatch();
-    if (current === "orange") {
-      current = "blue";
-    } else {
-      current = "orange";
-    }
-
     switchPlayer();
+    switchPlayerLabel();
   } else if (flippedAmount === 2 && frontCardValue[0] === frontCardValue[1]) {
     cardMatch();
-    if (current === "orange") {
-      orangePoints++;
-      orangePointRef.innerHTML = String(orangePoints);
-      current = "blue";
-    } else {
-      bluePoints++;
-      bluePointRef.innerHTML = String(bluePoints);
-      current = "orange";
-    }
+    updatePoints();
     switchPlayer();
+    switchPlayerLabel();
+    if (gameDone) {
+      gameOver();
+    }
   }
 }
 
-const exitButton = document.getElementById("exit") as HTMLElement;
-const popUp = document.getElementById("popup") as HTMLElement;
-
-exitButton?.addEventListener("click", function () {
-  switch (themeSelected) {
-    case "code-vibes-selection":
-      popUp.innerHTML += exitPopUpCode;
-      break;
-    case "foods-selection":
-      popUp.innerHTML += exitPopUpFood;
-      break;
-    case "gaming-selection":
-      popUp.innerHTML += exitPopUpGame;
-      break;
-    case "da-projects-selection":
-      popUp.innerHTML += exitPopUpDAProjects;
-      break;
+function gameOver() {
+  if (bluePoints > orangePoints) {
+    console.log("WINNER BLUE", bluePoints);
+  } else if (orangePoints > bluePoints) {
+    console.log("WINNER ORANGE", orangePoints);
+  } else {
+    console.log("DRAW");
   }
-
-  const backToGame = document.getElementById("back-btn") as HTMLButtonElement;
-  const exitGame = document.getElementById("exit-btn") as HTMLButtonElement;
-
-  backToGame?.addEventListener("click", function () {
-    popUp.innerHTML = "";
-  });
-
-  exitGame?.addEventListener("click", function () {
-    window.location.href = "settings.html";
-  });
-});
+}

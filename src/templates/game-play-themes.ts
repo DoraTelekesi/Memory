@@ -26,12 +26,12 @@ export const codeVibesGamePlayTheme = `<div class="content-wrapper_code-vibes">
 export const gamingGamePlayTheme = `<div class="content-wrapper_gaming">
         <div class="theme-visual_header_gaming">
           <div class="theme-visual_header-game_players">
-            <img src="assets/icon/chess_pawn_blue.svg" alt="orange pawn" class="theme-visual_header-game_players_img" />
+            <img src="assets/icon/chess_pawn_orange.svg" alt="orange pawn" class="theme-visual_header-game_players_img" />
 
-            <p class="theme-visual_header-game_players_number-orange">6</p>
-            <img src="assets/icon/chess_pawn_orange.svg" alt="blue pawn" class="theme-visual_header-game_players_img" />
+            <p class="theme-visual_header-game_players_number-orange"  id="orange-points">0</p>
+            <img src="assets/icon/chess_pawn_blue.svg" alt="blue pawn" class="theme-visual_header-game_players_img" />
 
-            <p class="theme-visual_header-game_players_number-blue">2</p>
+            <p class="theme-visual_header-game_players_number-blue" id="blue-points">0</p>
           </div>
           <div class="theme-visual_header-game_current">
             <p class="theme-visual_header-game_current_text">Current Player:</p>
@@ -47,12 +47,12 @@ export const gamingGamePlayTheme = `<div class="content-wrapper_gaming">
 export const daProjectsGamePlayTheme = `<div class="content-wrapper_da-projects">
         <div class="theme-visual_header_da-projects">
           <div class="theme-visual_header-da_players">
-            <img src="assets/icon/chess_pawn_blue.svg" alt="orange pawn" class="theme-visual_header-da_players_img" />
-
-            <p class="theme-visual_header-da_players_number-orange">6</p>
             <img src="assets/icon/chess_pawn_orange.svg" alt="blue pawn" class="theme-visual_header-da_players_img" />
 
-            <p class="theme-visual_header-da_players_number-blue">2</p>
+            <p class="theme-visual_header-da_players_number-orange"  id="orange-points">0</p>
+            <img src="assets/icon/chess_pawn_blue.svg" alt="orange pawn" class="theme-visual_header-da_players_img" />
+
+            <p class="theme-visual_header-da_players_number-blue" id="blue-points">0</p>
           </div>
           <div class="theme-visual_header-da_current">
             <p class="theme-visual_header-da_current_text">Current Player:</p>
@@ -69,9 +69,9 @@ export const foodsGamePlayTheme = `<div class="content-wrapper_food">
         <div class="theme-visual_header_food">
           <div class="theme-visual_header-food_players">
             <img src="assets/icon/chess_pawn_blue.svg" alt="blue label" class="theme-visual_header-food_players_img" />
-            <p class="theme-visual_header-food_players_number-blue">0</p>
+            <p class="theme-visual_header-food_players_number-blue"  id="blue-points">0</p>
             <img src="assets/icon/chess_pawn_orange.svg" alt="orange label" class="theme-visual_header-food_players_img" />
-            <p class="theme-visual_header-food_players_number-orange">6</p>
+            <p class="theme-visual_header-food_players_number-orange"  id="orange-points">0</p>
           </div>
           <div class="theme-visual_header-food_current">
             <p class="theme-visual_header-food_current_text">Current Player:</p>
