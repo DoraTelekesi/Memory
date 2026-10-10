@@ -2,22 +2,18 @@ import "./styles/settings/settings_main.scss";
 import "./styles/settings/themes.scss";
 import "./styles/game-play.scss";
 import { codeVibesGamePlayTheme, gamingGamePlayTheme, daProjectsGamePlayTheme, foodsGamePlayTheme } from "./templates/game-play-themes";
-/* import { exitPopUpFood, exitPopUpCode, exitPopUpDAProjects, exitPopUpGame } from "./templates/exit-themes"; */
 import { frontCardListCode, frontCardListDaProjects, frontCardListGame, frontCardListFood } from "./dataset";
 
 const mainContent = document.getElementById("main-content") as HTMLElement;
-
 export let themeSelected: string;
 let playerSelected: string;
 let sizeSelected: string;
-
 let url = window.location.href;
 
 const queryParams = new URLSearchParams(url.split("?")[1]);
 themeSelected = queryParams.get("theme") || "";
 playerSelected = queryParams.get("player") || "";
 sizeSelected = queryParams.get("size") || "";
-console.log(themeSelected, playerSelected, sizeSelected);
 
 if (themeSelected === "code-vibes-selection") {
   mainContent.innerHTML = codeVibesGamePlayTheme;
@@ -30,9 +26,9 @@ if (themeSelected === "code-vibes-selection") {
 }
 
 let current: "blue" | "orange" = playerSelected === "blue-selection" ? "blue" : "orange";
-let winner: string = "";
-let bluePoints: number = 0;
-let orangePoints: number = 0;
+export let winner: string = "";
+export let bluePoints: number = 0;
+export let orangePoints: number = 0;
 
 const currentPlayer = document.getElementById("current-player") as HTMLImageElement;
 const cardBoard = document.getElementById("card-board") as HTMLElement;
@@ -118,48 +114,67 @@ function updatePoints() {
     bluePointRef.innerHTML = String(bluePoints);
   }
 }
-const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
 
+const cards = document.querySelectorAll(".card") as NodeListOf<HTMLElement>;
 let flippedAmount: number = 0;
 let frontCardValue: string[] = [];
-let selectedCard: HTMLElement[] = [];
+let selectedCard: number[] = [];
 let gameDone: boolean = false;
-let flipped: boolean = false;
+let boardLock: boolean = false;
+
+interface Card {
+  state: "facedown" | "flipped" | "stay-flipped";
+}
+
+let cardStates: Card[] = [];
 
 for (let i = 0; i < cards.length; i++) {
+  cardStates.push({ state: "facedown" });
+
   const cardFront = (cards[i].childNodes[0] as HTMLElement).childNodes[0] as HTMLImageElement;
   const cardInner = cards[i].childNodes[0] as HTMLElement;
+
   cards[i].addEventListener("click", () => {
-    flipped = false;
-    if (!flipped && !gameDone) {
-      flipCard(cardFront, cardInner, i);
+    if (cardStates[i].state === "facedown" && !boardLock) {
+      clickOnCard(cardFront, cardInner, i);
+    } else {
+      console.log("noclick!");
     }
   });
 }
 
+
+function clickOnCard(cardFront: HTMLImageElement, cardInner: HTMLElement, i: number) {
+  if (!gameDone) {
+    flipCard(cardFront, cardInner, i);
+  }
+}
+
 function noMatch() {
+  boardLock = true;
   setTimeout(() => {
-    document.querySelectorAll(".is-flipped").forEach((el) => {
-      (el as HTMLElement).classList.remove("is-flipped");
+    selectedCard.forEach((index) => {
+      (cards[index].childNodes[0] as HTMLElement).classList.remove("is-flipped");
+      cardStates[index].state = "facedown";
     });
-    flipped = false;
     frontCardValue = [];
     flippedAmount = 0;
     selectedCard = [];
-  }, 1000);
+    boardLock = false;
+  }, 700);
 }
 
 function cardMatch() {
-  selectedCard.forEach((card) => {
-    (card.childNodes[0] as HTMLElement).classList.add("stay-flipped");
-    (card.childNodes[0] as HTMLElement).classList.remove("is-flipped");
+  selectedCard.forEach((index) => {
+    (cards[index].childNodes[0] as HTMLElement).classList.add("stay-flipped");
+    (cards[index].childNodes[0] as HTMLElement).classList.remove("is-flipped");
+    cardStates[index].state = "stay-flipped";
   });
   if (document.querySelectorAll(".stay-flipped").length === cards.length) {
     gameDone = true;
     console.log("GAME IS DONE");
   }
   selectedCard = [];
-  flipped = false;
   frontCardValue = [];
   flippedAmount = 0;
 }
@@ -217,10 +232,11 @@ const orangePointRef = document.getElementById("orange-points") as HTMLElement;
 function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
   front.src = `assets/img/frontcards/card_${frontCardArrayCombined[index % boardSizeNumber]}_front.png`;
   inner.classList.add("is-flipped");
-  flipped = true;
+
   flippedAmount++;
   frontCardValue.push(frontCardArrayCombined[index % boardSizeNumber]);
-  selectedCard.push(cards[index]);
+  selectedCard.push(index);
+  cardStates[index].state = "flipped";
   if (flippedAmount === 2 && frontCardValue[0] !== frontCardValue[1]) {
     noMatch();
     switchPlayer();
@@ -233,15 +249,23 @@ function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
     if (gameDone) {
       gameOver();
     }
+  } else {
+    cardStates[index].state = "flipped";
   }
 }
 
 function gameOver() {
   if (bluePoints > orangePoints) {
+    winner = "blue";
     console.log("WINNER BLUE", bluePoints);
+    window.location.href = `game-over.html?winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
   } else if (orangePoints > bluePoints) {
+    winner = "orange";
     console.log("WINNER ORANGE", orangePoints);
+    window.location.href = `game-over.html?winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
   } else {
+    winner = "draw";
     console.log("DRAW");
+    window.location.href = `game-over.html?winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
   }
 }
