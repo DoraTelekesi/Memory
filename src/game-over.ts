@@ -31,3 +31,32 @@ const blueScore = document.getElementById("blue-score") as HTMLElement;
 const orangeScore = document.getElementById("orange-score") as HTMLElement;
 blueScore.innerHTML = bluePoints;
 orangeScore.innerHTML = orangePoints;
+
+console.log(winner);
+const winnerTitle = document.getElementById("title") as HTMLElement;
+const winnerIcon = document.getElementById("winner-icon") as HTMLImageElement;
+const subtitle = document.getElementById("subtitle") as HTMLElement;
+
+if (winner === "blue") {
+  winnerTitle.innerHTML = "BLUE PLAYER";
+  winnerTitle.style.color = "#2bb1ff";
+  winnerIcon.src = "assets/icon/blue_big.png";
+} else if (winner === "orange") {
+  winnerTitle.innerHTML = "ORANGE PLAYER";
+  winnerTitle.style.color = "#F58E39";
+  winnerIcon.src = "assets/icon/orange_big.png";
+} else if (winner === "draw") {
+  winnerTitle.innerHTML = "DRAW";
+  winnerTitle.style.color = "#4DD5BC";
+  winnerTitle.style.fontSize = "80px";
+  subtitle.innerHTML = "It`s";
+  winnerIcon.src = "assets/icon/Scale_Icon.png";
+}
+
+const slideScreen = document.getElementById("slide-screen") as HTMLElement;
+
+setTimeout(() => {
+  slideScreen.style.animation = "slideDown";
+  slideScreen.style.animationDuration = "2s";
+  slideScreen.style.top = "0";
+}, 1000);
