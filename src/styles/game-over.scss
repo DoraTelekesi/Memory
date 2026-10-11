@@ -60,3 +60,197 @@ body {
     }
   }
 }
+
+.main_game {
+  background-color: #294f60;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: #ed1b76;
+    font-size: 110px;
+    font-family: "Orbitron", sans-serif;
+    margin: 20px;
+  }
+
+  p {
+    color: #ffffff;
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .scores {
+    display: flex;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    .blue-score,
+    .orange-score {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .label {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  .orange-score {
+    &_text,
+    &_number {
+      color: #ea6900;
+      margin: 0;
+    }
+    &_label {
+      width: 30px;
+    }
+  }
+
+  .blue-score {
+    &_text,
+    &_number {
+      color: #097fc5;
+      margin: 0;
+    }
+    &_label {
+      width: 30px;
+    }
+  }
+}
+
+.main_da {
+  background-color: #1e7594;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: #fd5b4f;
+    font-size: 110px;
+    font-family: "Figtree", sans-serif;
+    margin: 20px;
+    text-shadow: 0 4px 4px #00000040;
+  }
+
+  p {
+    color: #ffffff;
+    font-family: "Figtree", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .scores {
+    display: flex;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    .blue-score,
+    .orange-score {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .label {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  .orange-score {
+    &_text,
+    &_number {
+      color: #ea6900;
+      margin: 0;
+      font-family: "Figtree";
+    }
+    &_label {
+      width: 30px;
+    }
+  }
+
+  .blue-score {
+    &_text,
+    &_number {
+      color: #097fc5;
+      margin: 0;
+      font-family: "Figtree";
+    }
+    &_label {
+      width: 30px;
+    }
+  }
+}
+
+.main_food {
+  background-color: #f3832d;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: #ffffff;
+    font-size: 110px;
+    font-family: "KleeOne", sans-serif;
+    margin: 20px;
+    text-shadow: 0 4px 4px #00000040;
+  }
+
+  p {
+    color: #ffffff;
+    font-family: "KleeOne", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .scores {
+    display: flex;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    .blue-score,
+    .orange-score {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .label {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  .orange-score {
+    &_text,
+    &_number {
+      color: #ea6900;
+      margin: 0;
+      font-family: "Figtree";
+    }
+    &_label {
+      width: 30px;
+    }
+  }
+
+  .blue-score {
+    &_text,
+    &_number {
+      color: #097fc5;
+      margin: 0;
+      font-family: "Figtree";
+    }
+    &_label {
+      width: 30px;
+    }
+  }
+}

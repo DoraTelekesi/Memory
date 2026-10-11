@@ -232,7 +232,6 @@ const orangePointRef = document.getElementById("orange-points") as HTMLElement;
 function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
   front.src = `assets/img/frontcards/card_${frontCardArrayCombined[index % boardSizeNumber]}_front.png`;
   inner.classList.add("is-flipped");
-
   flippedAmount++;
   frontCardValue.push(frontCardArrayCombined[index % boardSizeNumber]);
   selectedCard.push(index);
@@ -257,15 +256,12 @@ function flipCard(front: HTMLImageElement, inner: HTMLElement, index: number) {
 function gameOver() {
   if (bluePoints > orangePoints) {
     winner = "blue";
-    console.log("WINNER BLUE", bluePoints);
-    window.location.href = `game-over.html?winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
+    window.location.href = `game-over.html?theme=${themeSelected}&winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
   } else if (orangePoints > bluePoints) {
     winner = "orange";
-    console.log("WINNER ORANGE", orangePoints);
-    window.location.href = `game-over.html?winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
+    window.location.href = `game-over.html?theme=${themeSelected}&winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
   } else {
     winner = "draw";
-    console.log("DRAW");
-    window.location.href = `game-over.html?winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
+    window.location.href = `game-over.html?theme=${themeSelected}&winner=${winner}&bluePoints=${bluePoints}&orangePoints=${orangePoints}`;
   }
 }
