@@ -256,7 +256,8 @@ body {
   }
 }
 
-.slide-screen {
+//slide screen coding vibes
+.slide-screen_code {
   background-color: #303131;
   width: 100%;
   height: 100vh;
@@ -305,5 +306,127 @@ body {
   }
   to {
     top: 0;
+  }
+}
+
+//slide screen gaming theme
+.slide-screen_game {
+  background-color: #294f60;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: -100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  .subtitle {
+    color: white;
+    font-family: "Orbitron";
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .title {
+    color: #2bb1ff;
+    font-family: "Orbitron";
+    font-size: 50px;
+    margin: 10px;
+  }
+  .cup {
+    width: 340px;
+  }
+
+  .back-btn {
+    background-color: #ed1b7614;
+    color: white;
+    font-family: "Orbitron";
+    font-size: 20px;
+    border: 3px solid #e71c4f;
+    border-radius: 5px;
+    width: 120px;
+    height: 50px;
+  }
+}
+
+//slide screen da-projects
+.slide-screen_da {
+  background-color: #1e7594;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: -100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  .subtitle {
+    color: white;
+    font-family: "Figtree";
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .title {
+    color: white;
+    font-family: "Figtree";
+    font-size: 50px;
+    margin: 10px;
+  }
+
+  .back-btn {
+    background-color: #bfe5f2;
+    color: #1e7594;
+    font-family: "Figtree";
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    width: 120px;
+    height: 50px;
+  }
+}
+
+//slide screen foods selection
+.slide-screen_food {
+  background-color: #f6f6f6;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: -100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  .subtitle {
+    color: #a45212;
+    font-family: "KleeOne";
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .title {
+    color: #a45212;
+    font-family: "KleeOne";
+    font-size: 50px;
+    margin: 10px;
+  }
+
+  .back-btn {
+    background-color: #f3832d;
+    color: white;
+    font-family: "KleeOne";
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    width: 120px;
+    height: 50px;
   }
 }
