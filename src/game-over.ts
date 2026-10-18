@@ -111,9 +111,16 @@ if (theme === "foods-selection") {
 }
 
 const slideScreen = document.getElementById("slide-screen") as HTMLElement;
+const backButton = document.getElementById("back-btn") as HTMLButtonElement;
 
 setTimeout(() => {
   slideScreen.style.animation = "slideDown";
   slideScreen.style.animationDuration = "2s";
   slideScreen.style.top = "0";
 }, 1000);
+
+backButton.addEventListener("click", goToHome);
+
+function goToHome() {
+  window.location.href = "index.html";
+}
