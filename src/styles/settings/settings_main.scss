@@ -131,29 +131,42 @@ input[type="radio"] {
 }
 
 .chosen-setup {
-  gap: 20px;
-  @include flex(none, center, row);
-  > .start_btn {
-    @include flex(center, center, row);
-    gap: 5px;
-    border: none;
-    background-color: $secondary-color;
-    width: 120px;
-    height: 55px;
+  @include flex(none, center, column);
+  height:120px;
+  gap:5px;
+  > .game-starter {
+    gap: 20px;
+    @include flex(none, center, row);
+    > .start_btn {
+      @include flex(center, center, row);
+      gap: 5px;
+      border: none;
+      background-color: $secondary-color;
+      width: 120px;
+      height: 55px;
+      cursor: pointer;
 
-    > .start_btn-text {
-      font-family: "Red Rose", sans-serif;
-      font-size: 24px;
-      font-weight: 600;
+      > .start_btn-text {
+        font-family: "Red Rose", sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+
+    > .divider {
+      width: 7px;
+      height: 40px;
+      background-color: $secondary-color;
+      transform: rotate(20deg);
     }
   }
+}
 
-  > .divider {
-    width: 7px;
-    height: 40px;
-    background-color: $secondary-color;
-    transform: rotate(20deg);
-  }
+.warning {
+  color: red;
+  margin:0;
+  visibility: hidden;
+
 }
 
 .selection-underline-visible {

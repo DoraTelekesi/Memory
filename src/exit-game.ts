@@ -4,20 +4,28 @@ import { themeSelected } from "./game-play";
 const exitButton = document.getElementById("exit") as HTMLElement;
 const popUp = document.getElementById("popup") as HTMLElement;
 
+let exitPoppedUp = false;
+
 exitButton?.addEventListener("click", function () {
-  switch (themeSelected) {
-    case "code-vibes-selection":
-      popUp.innerHTML += exitPopUpCode;
-      break;
-    case "foods-selection":
-      popUp.innerHTML += exitPopUpFood;
-      break;
-    case "gaming-selection":
-      popUp.innerHTML += exitPopUpGame;
-      break;
-    case "da-projects-selection":
-      popUp.innerHTML += exitPopUpDAProjects;
-      break;
+  if (!exitPoppedUp) {
+    switch (themeSelected) {
+      case "code-vibes-selection":
+        popUp.innerHTML += exitPopUpCode;
+        break;
+      case "foods-selection":
+        popUp.innerHTML += exitPopUpFood;
+        break;
+      case "gaming-selection":
+        popUp.innerHTML += exitPopUpGame;
+        break;
+      case "da-projects-selection":
+        popUp.innerHTML += exitPopUpDAProjects;
+        break;
+    }
+  }
+
+  if (popUp.innerHTML !== "") {
+    exitPoppedUp = true;
   }
 
   const backToGame = document.getElementById("back-btn") as HTMLButtonElement;
@@ -25,6 +33,7 @@ exitButton?.addEventListener("click", function () {
 
   backToGame?.addEventListener("click", function () {
     popUp.innerHTML = "";
+    exitPoppedUp = false;
   });
 
   exitGame?.addEventListener("click", function () {
